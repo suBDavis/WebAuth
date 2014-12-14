@@ -10,7 +10,7 @@ if (mysqli_connect_errno()){echo "Failed to connect to MySQL: " . mysqli_connect
 //On success, set a random cookie and store it in the user table
 //On failure, deflect back to the index page.
 
-if isset($_COOKIE['auth']){
+if (isset($_COOKIE['auth'])){
 
   $sql = "SELECT * FROM `users` WHERE `cookie` LIKE " . $_COOKIE['auth'];
 
@@ -31,7 +31,5 @@ if isset($_COOKIE['auth']){
 
   echo ("no cookie");
 }
-
-
 
 ?>
