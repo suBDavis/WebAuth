@@ -19,7 +19,7 @@ if isset($_COOKIE['auth']){
   $sql = "SELECT * FROM `users` WHERE `name` LIKE " . $_POST['mc_username'];
   $c_value = 1234
   //on success
-  setcookie('auth', $c_value, time() + (86400)); // 86400 = 1 day
+  setcookie('auth', $c_value, time() + (86400), "/"); // 86400 = 1 day
 }
 
 
