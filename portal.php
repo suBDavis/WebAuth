@@ -24,7 +24,7 @@ if (isset($_COOKIE['auth'])){
 
   echo $row['pass'];
 
-  if ( hash('sha256' , $_POST['pass1']) == $row['pass']){
+  if ( hash('sha256' , $_POST['mc_pass']) == $row['pass']){
     $c_value =  hash('sha256', time());
     //on success
     setcookie('auth', $c_value);
