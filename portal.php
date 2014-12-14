@@ -12,13 +12,13 @@ if (mysqli_connect_errno()){echo "Failed to connect to MySQL: " . mysqli_connect
 
 if (isset($_COOKIE['auth'])){
 
-  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE " . $_COOKIE['auth'];
+  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE $_COOKIE['auth']";
 
   echo("cookie found");
 
 } else {
 
-  $sql = "SELECT * FROM `users` WHERE `name` LIKE " . $_POST["mc_username"];
+  $sql = "SELECT * FROM `users` WHERE `name` LIKE $_POST['mc_username']";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
 
