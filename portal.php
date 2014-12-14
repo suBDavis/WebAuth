@@ -20,7 +20,7 @@ if (isset($_COOKIE['auth'])){
 
   $sql = "SELECT * FROM `users` WHERE `name` LIKE " . $_POST['mc_username'];
   $result = $conn->query($sql);
-  $row = $result->fetch_assoc()
+  $row = $result->fetch_assoc();
 
   if ( hash('sha256' , $_POST['pass1']) == $row['pass']){
     $c_value =  hash('sha256', time());
