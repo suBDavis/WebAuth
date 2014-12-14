@@ -15,13 +15,13 @@ $mc_pass = $_POST["mc_pass"];
 
 if (isset($_COOKIE['auth'])){
 
-  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE $auth";
+  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth "'";
 
   echo("cookie found");
 
 } else {
 
-  $sql = "SELECT * FROM `users` WHERE `name` LIKE $mc_username";
+  $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
 
