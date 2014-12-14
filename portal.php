@@ -15,7 +15,7 @@ $mc_pass = $_POST["mc_pass"];
 
 if (isset($_COOKIE['auth'])){
 
-  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth "'";
+  $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth . "'";
 
   echo("cookie found");
 
