@@ -224,7 +224,7 @@ function kickback(){
               <table class='table table-striped'>
                 <tr>
                   <th>Name</th>
-                  <th>Staff Issuer</th>
+                  <th width='100'>Staff Issuer</th>
                   <th>Offense</th>
                   <th>Action</th>
                   <th>Time</th>
