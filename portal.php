@@ -66,6 +66,11 @@ if (isset($_COOKIE['auth'])){
   //kick back to login
   kickback();
 }
+if (isset($_GET['exit'])){
+  unsetCookie();
+  //kick back to login
+  kickback();
+}
 
 mysqli_close($con);
 
@@ -124,7 +129,7 @@ function kickback(){
             <li role="presentation"><a href="#">Profile</a></li>
             <li role="presentation"><a href="#">Messages</a></li>
             <li role="presentation"><a href="#">BanLog</a></li>
-            <li role="presentation"><a href="#">Sign Out</a></li>
+            <li role="presentation"><a href="?exit=true">Sign Out</a></li>
           </ul>
         </div>
       </div>
