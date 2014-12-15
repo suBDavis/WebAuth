@@ -24,6 +24,7 @@ if (isset($_COOKIE['auth'])){
     //you are already logged in.  Whatever homie.
     echo "You are already logged in!";
 
+  }
 } else if (isset($_POST['mc_username'])) {
 
   $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
