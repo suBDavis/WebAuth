@@ -15,9 +15,19 @@ $mc_pass = $_POST["mc_pass"];
 
 if (isset($_COOKIE['auth'])){
 
+  //find the value of the latest known cookie
   $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth . "'";
+  $result = mysqli_query($con, $sql);
+  $row = mysqli_fetch_assoc($result);
 
-  echo("cookie found");
+  if ( $auth == $row['cookie']){
+    //you are already logged in.  Whatever homie.
+  } else {
+    //do this if cookie doesnt match
+    setcookie('auth', '0');
+    //kick back to login
+    header('/');
+  }
 
 } else {
 
@@ -25,16 +35,18 @@ if (isset($_COOKIE['auth'])){
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
 
-  echo $row['pass'];
-
   if ( hash('sha256' , $mc_pass) == $row['pass']){
     $c_value =  hash('sha256', time());
     //on success
     setcookie('auth', $c_value);
+    //set cookie in SQL DB
+    $sql = "UPDATE `webauth`.`users` SET `cookie` = \'text2\' WHERE `users`.`index` = 2;";
+    //do other things
     echo("success");
+  } else {
+    //do this if login fails
+    header('/');
   }
-
-  echo ("no cookie");
 }
 
 ?>
