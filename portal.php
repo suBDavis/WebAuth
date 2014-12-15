@@ -196,7 +196,7 @@ function kickback(){
         while ($row = mysqli_fetch_array($result)){
           echo
           "<tr>
-            <td><img src='avatars/".$player."/></td>
+            <td><img src='avatars/".$player."''/></td>
             <td>".$player."</td>
             <td>".$row['skype']."</td>
           </tr>";
