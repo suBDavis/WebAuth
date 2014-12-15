@@ -4,41 +4,47 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
   <style>
-  .nav-pills > li > a {
-    font-size: 14px;
-    color: #37404e;
-    border-radius: 10px 10px 10px 10px;
-    padding: 10px;
+  .crop {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
   }
-  .input-group {
-    margin-top:20px;
+  .crop img {
+    width: 200px;
+    height: 200px;
+    margin: -80px 0 0 -40px;
+  }
+  img {
+    image-rendering: optimizeSpeed;             /*                     */
+    image-rendering: -moz-crisp-edges;          /* Firefox             */
+    image-rendering: -o-crisp-edges;            /* Opera               */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and Safari) */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed       */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                */
   }
   </style>
 </head>
 <body>
   <div class='row'>
-    <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
-      <div class='row'>
-        <div class='col-md-1 col-md-offset-1'>
-          <img src='avatars/<?php echo $player;?>'/>
+    <div class='col-md-4 col-md-offset-4'>
+      <br><br>
+      <center>
+        <h2>Collectrum Player Portal</h2>
+      </center>
+      <br><br>
+      <form role='form' action='portal.php' method='post'>
+        <div class='form-group'>
+          <label for='mc_username'>In Game Name</label>
+          <input type='text' class='form-control' id='mc_username' name='mc_username' placeholder='Enter Username'>
         </div>
-        <div class='col-md-3'>
-          <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
-          <h4>UUID: <?php echo $uuid;?></h4>
+        <div class='form-group'>
+          <label for='pass1'>Password</label>
+          <input type='password' class='form-control' id='pass1' name='mc_pass' placeholder='Password'>
         </div>
-        <div class='col-md-6' style ="padding-top:22px;">
-          <ul class="nav nav-pills">
-            <li role="presentation"><a href="?tab=list">Member List</a></li>
-            <li role="presentation"><a href="?tab=profile">Profile</a></li>
-            <li role="presentation"><a href="#">Messages<span class="badge">4</span></a></li>
-            <li role="presentation"><a href="#">BanLog</a></li>
-            <?php if($isStaff){echo"<li role='presentation'><a href='?tab=staff'>Staff</a></li>";}?>
-            <li role="presentation"><a href="?tab=exit">Sign Out</a></li>
-          </ul>
-        </div>
+        <input type='submit' class='btn btn-default'></input>
+      </form>
+      <div >
       </div>
-    </div>
-  </div>
       <br><br>
       <div class="panel panel-info">
         <div class="panel-heading">
