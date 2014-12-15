@@ -106,11 +106,9 @@ function kickback(){
 </head>
 <body>
   <div class='row'>
-    <div class='col-md-1' style='padding-top: .5cm; paddint-left: .2cm;'>
-      <h1>You are logged on</h1>
-      <h3>Player: <?php echo $player;?></h3>
+    <div class='col-md-12' style='padding-top: .5cm; padding-left: .5cm;'>
+      <h1>Hello there, <?php echo $player;?></h1>
       <h3>UUID: <?php echo $uuid;?></h3>
-      <h3>Staff? <?php echo $isStaff;?></h3>
     </div>
   </div>
 </body>
