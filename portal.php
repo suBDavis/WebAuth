@@ -68,7 +68,7 @@ function getUUID($username){
   curl_close($curl);
 
   $json_a = json_decode($resp,true);
-  return $json_a[name];
+  return $json_a['id'];
 }
 
 ?>
