@@ -19,11 +19,14 @@ if (isset($_COOKIE['auth'])){
   $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth . "'";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
+  if (mysql_num_rows($result) == 1){
 
-  if ( $auth == $row['cookie']){
-    //you are already logged in.  Whatever homie.
-    echo "You are already logged in!";
+      //you are already logged in.  Whatever homie.
+      echo "Welcome back " . $row['name']; 
 
+  } else {
+    unsetCookie();
+    kickBack();
   }
 } else if (isset($_POST['mc_username'])) {
 
@@ -32,7 +35,7 @@ if (isset($_COOKIE['auth'])){
   $row = mysqli_fetch_assoc($result);
   if (isset($row['name'])){
     if ( hash('sha256' , $mc_pass) == $row['pass']){
-      $c_value =  hash('sha256', time());
+      $c_value =  hash('sha256', time() + rand());
       //on success
       setcookie('auth', $c_value);
       //get the UUID
@@ -45,16 +48,14 @@ if (isset($_COOKIE['auth'])){
       echo("success");
     } else {
       //do this if login fails
-      header("Location: " . $root_dir );
-      die();
+      kickback();
     }
   } else{echo "You are not in the database; Register by running /webauth <password> ";}
 } else {
   //do this if cookie doesnt match
-  setcookie('auth', '0');
+  unsetCookie();
   //kick back to login
-  header("Location: " . $root_dir );
-  die();
+  kickback();
 }
 function getUUID($username){
   $curl = curl_init();
@@ -71,6 +72,14 @@ function getUUID($username){
 
   $json_a = json_decode($resp,true);
   return $json_a['id'];
+}
+function unsetCookie(){
+  unset($_COOKIE['auth']);
+  setcookie('auth', '', time() - 3600); // empty value and old timestamp
+}
+function kickback(){
+  header("Location: " . $root_dir );
+  die();
 }
 
 ?>
