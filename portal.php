@@ -28,7 +28,7 @@ if (isset($_COOKIE['auth'])){
 
       //you are already logged in.  Whatever homie.
       $player = $row['name'];
-      $uuid = getUUID($player);
+      $uuid = $row['id'];
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
 
   } else {
@@ -80,6 +80,7 @@ switch($_GET['tab']){
 }
 
 function getUUID($username){
+
   $curl = curl_init();
   // Set some options - we are passing in a useragent too here
   curl_setopt_array($curl, array(
@@ -94,6 +95,7 @@ function getUUID($username){
 
   $json_a = json_decode($resp,true);
   return $json_a['id'];
+  
 }
 function unsetCookie(){
   unset($_COOKIE['auth']);
