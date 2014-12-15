@@ -28,7 +28,7 @@ if (isset($_COOKIE['auth'])){
 
       //you are already logged in.  Whatever homie.
       $player = $row['name'];
-      $uuid = $row['id'];
+      $uuid = $row['uuid'];
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
 
   } else {
@@ -95,7 +95,7 @@ function getUUID($username){
 
   $json_a = json_decode($resp,true);
   return $json_a['id'];
-  
+
 }
 function unsetCookie(){
   unset($_COOKIE['auth']);
