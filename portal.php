@@ -22,6 +22,7 @@ if (isset($_COOKIE['auth'])){
 
   if ( $auth == $row['cookie']){
     //you are already logged in.  Whatever homie.
+    echo "You are already logged in!";
   } else {
     //do this if cookie doesnt match
     setcookie('auth', '0');
@@ -34,7 +35,7 @@ if (isset($_COOKIE['auth'])){
   $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
-  if (mysql_num_rows($result)>0){
+  if (isset($row['name'])){
     if ( hash('sha256' , $mc_pass) == $row['pass']){
       $c_value =  hash('sha256', time());
       //on success
