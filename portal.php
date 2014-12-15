@@ -168,7 +168,7 @@ function kickback(){
         <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Skype Name</span>
-        <input type='text' class='form-control' id='skype' name='skype' placeholder=".$skype_name.">
+        <input type='text' class='form-control' id='skype' name='skype' placeholder=".$skype.">
         </div>
         <div class='input-group'>
         <span class='input-group-addon'>Email Address</span>
