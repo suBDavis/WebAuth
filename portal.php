@@ -42,8 +42,10 @@ if (isset($_COOKIE['auth'])){
       setcookie('auth', $c_value);
       //get the UUID
       $uuid = getUUID($mc_username);
+      echo $uuid;
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
+      $result = mysqli_query($con, $sql);
       //do other things
       echo("success");
     } else {
@@ -57,13 +59,11 @@ function getUUID($username){
   // Set some options - we are passing in a useragent too here
   curl_setopt_array($curl, array(
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'https://api.mojang.com/users/profiles/minecraft/subdavis',
+    CURLOPT_URL => "https://api.mojang.com/users/profiles/minecraft/" . $username,
     CURLOPT_USERAGENT => 'Codular Sample cURL Request'
   ));
   // Send the request & save response to $resp
   $resp = curl_exec($curl);
-
-  echo $resp;
   // Close request to clear up some resources
   curl_close($curl);
 
