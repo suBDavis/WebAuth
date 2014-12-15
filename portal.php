@@ -66,14 +66,16 @@ if (isset($_COOKIE['auth'])){
   //kick back to login
   kickback();
 }
-if (isset($_GET['exit'])){
-  unsetCookie();
-  //kick back to login
-  kickback();
-}
-
 mysqli_close($con);
 
+switch($_GET['tab']){
+  case 'exit':
+    unsetCookie();
+    kickback();
+    break;
+  defualt:
+    $tab = $_GET['tab'];
+}
 
 function getUUID($username){
   $curl = curl_init();
@@ -113,6 +115,9 @@ function kickback(){
     border-radius: 10px 10px 10px 10px;
     padding: 15px;
   }
+  .input-group {
+    margin-top:20px;
+  }
   </style>
 </head>
 <body>
@@ -126,10 +131,10 @@ function kickback(){
         <div class='col-md-5' style ="padding-top:22px;">
           <ul class="nav nav-pills">
             <li role="presentation"><a href="#">Member List</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
+            <li role="presentation"><a href="?tab=profile">Profile</a></li>
+            <li role="presentation"><a href="#">Messages<span class="badge">4</span></a></li>
             <li role="presentation"><a href="#">BanLog</a></li>
-            <li role="presentation"><a href="?exit=true">Sign Out</a></li>
+            <li role="presentation"><a href="?tab=exit">Sign Out</a></li>
           </ul>
         </div>
       </div>
@@ -140,5 +145,33 @@ function kickback(){
       </div>
     </div>
   </div>
+  <?php
+    //do SQL for getting user profile
+    $skype_name = "placeholder";
+    $email = "placeholder@place.holder";
+    switch ($tab){
+      case 'profile':
+        echo "
+        <div class='row'>
+        <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+        <div class='row'>
+        <div class='col-md-5' style='margin-left:15px; margin-right:15px;'>
+        <form role='form' action='?tab=profile' method='post'>
+        <div class='input-group'>
+        <span class='input-group-addon'>Skype Name</span>
+        <input type='text' class='form-control' id='skype' name='skype' placeholder=".$skype_name.">
+        </div>
+        <div class='input-group'>
+        <span class='input-group-addon'>Email Address</span>
+        <input type='text' class='form-control' id='email' name='email' placeholder=".$email.">
+        </div>
+        <button style='margin-top:20px;' type='submit' class='btn btn-default'>Update Profile</button>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        ";
+    }
 </body>
 </html>
