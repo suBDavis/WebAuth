@@ -54,7 +54,7 @@ if (isset($_COOKIE['auth'])){
       $player = $mc_username;
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       //save avitar on the webserver.  Update database with link
-      $url1 = "https://mctoolbox.net/avatar/".$player."/100";
+      $url1 = "https://mctoolbox.net/avatar/".$row['name']."/100";
       $img1 = "avatars/".$row['name'];
       file_put_contents($img1, file_get_contents($url1));
       //set cookie in SQL DB
