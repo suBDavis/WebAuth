@@ -225,7 +225,7 @@ function kickback(){
                   <th style='width:150px;'>Time</th>
                 </tr>";
                 //do loop for filling table
-                  $sql = "SELECT * FROM `banlog` ORDER BY `time`";
+                  $sql = "SELECT * FROM `banlog` ORDER BY `timestamp` DESC";
                   $result = mysqli_query($con, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     $trclass;
