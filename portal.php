@@ -172,6 +172,7 @@ function kickback(){
         </div>
         </div>
         ";
+  ?>
     }
 </body>
 </html>
