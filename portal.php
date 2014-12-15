@@ -119,7 +119,7 @@ function kickback(){
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
   <style>
   .nav-pills > li > a {
-    font-size: 18px;
+    font-size: 14px;
     color: #37404e;
     border-radius: 10px 10px 10px 10px;
     padding: 15px;
@@ -146,6 +146,7 @@ function kickback(){
             <li role="presentation"><a href="?tab=profile">Profile</a></li>
             <li role="presentation"><a href="#">Messages<span class="badge">4</span></a></li>
             <li role="presentation"><a href="#">BanLog</a></li>
+            <? if($isStaff){echo"<li role='presentation'><a href='?tab=staff'>Staff</a></li>";}?>
             <li role="presentation"><a href="?tab=exit">Sign Out</a></li>
           </ul>
         </div>
