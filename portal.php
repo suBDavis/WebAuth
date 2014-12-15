@@ -23,15 +23,8 @@ if (isset($_COOKIE['auth'])){
   if ( $auth == $row['cookie']){
     //you are already logged in.  Whatever homie.
     echo "You are already logged in!";
-  } else {
-    //do this if cookie doesnt match
-    setcookie('auth', '0');
-    //kick back to login
-    header("Location: " . $root_dir );
-    die();
-  }
 
-} else {
+} else if (isset($_POST['mc_username'])) {
 
   $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
   $result = mysqli_query($con, $sql);
@@ -55,6 +48,12 @@ if (isset($_COOKIE['auth'])){
       die();
     }
   } else{echo "You are not in the database; Register by running /webauth <password> ";}
+} else {
+  //do this if cookie doesnt match
+  setcookie('auth', '0');
+  //kick back to login
+  header("Location: " . $root_dir );
+  die();
 }
 function getUUID($username){
   $curl = curl_init();
