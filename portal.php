@@ -49,12 +49,14 @@ if (isset($_COOKIE['auth'])){
       $uuid = getUUID($mc_username);
       $player = $mc_username;
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
-      //echo $uuid;
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
       $result = mysqli_query($con, $sql);
       //do other things?
-
+      //save avitar on the webserver.  Update database with link
+      $url1 = "https://mctoolbox.net/avatar/".$player."/100";
+      $img1 = "avatars/".$player;
+      file_put_contents($img1, file_get_contents($url1));
     } else {
       //do this if login fails
       kickback();
