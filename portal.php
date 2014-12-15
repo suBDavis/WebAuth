@@ -10,9 +10,10 @@ if (mysqli_connect_errno()){echo "Failed to connect to MySQL: " . mysqli_connect
 //On success, set a random cookie and store it in the user table
 //On failure, deflect back to the index page.
 $auth = $_COOKIE["auth"];
-$mc_username = $_POST["mc_username"];
-$mc_pass = $_POST["mc_pass"];
-
+if (isset($_POST['mc_pass'])){
+  $mc_username = $_POST["mc_username"];
+  $mc_pass = $_POST["mc_pass"];
+}
 //after auth, these are the variables that I can use on the page.
 $player;
 $uuid;
@@ -51,7 +52,7 @@ if (isset($_COOKIE['auth'])){
       setcookie('auth', $c_value);
       //get the UUID
       $uuid = getUUID($mc_username);
-      $player = $mc_username;
+      $player = $row['name'];
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       //save avitar on the webserver.  Update database with link
       $url1 = "https://mctoolbox.net/avatar/".$row['name']."/100";
