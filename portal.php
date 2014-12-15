@@ -142,11 +142,10 @@ function kickback(){
         </div>
         <div class='col-md-5' style ="padding-top:22px;">
           <ul class="nav nav-pills">
-            <li role="presentation"><a href="?tab=home">Home</a></li>
             <li role="presentation"><a href="?tab=list">Member List</a></li>
             <li role="presentation"><a href="?tab=profile">Profile</a></li>
-            <li role="presentation"><a href="#">Messages<span class="badge">4</span></a></li>
-            <li role="presentation"><a href="#">BanLog</a></li>
+            <li role="presentation"><a href="?tab=mail">Mail<span class="badge">4</span></a></li>
+            <li role="presentation"><a href="?tab=banlog">BanLog</a></li>
             <?php if($isStaff){echo"<li role='presentation'><a href='?tab=staff'>Staff</a></li>";}?>
             <li role="presentation"><a href="?tab=exit">Sign Out</a></li>
           </ul>
@@ -215,6 +214,41 @@ function kickback(){
           </div>
           </div>
         ";
+      break;
+      case 'banlog':
+      echo "
+      <div class='row'>
+        <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+          <div class='row'>
+            <div class='col-md-8 col-md-offset-2'>
+              <table class='table table-striped'>
+                <tr>
+                  <th>Name</th>
+                  <th>Staff Issuer</th>
+                  <th>Offense</th>
+                  <th>Action</th>
+                  <th>Time</th>
+                </tr>";
+                //do loop for filling table
+                  $sql = "SELECT * FROM `banlog`";
+                  $result = mysqli_query($con, $sql);
+                  while ($row = mysqli_fetch_array($result)){
+                  echo
+                    "<tr>
+                      <td>".$row['name']."</td>
+                      <td>".$row['staff']."</td>
+                      <td>".$row['offense']."</td>
+                      <td>".$row['action']."</td>
+                      <td>".$row['timestamp']."</td>
+                    </tr>";
+                }
+              echo "
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      ";
       break;
     }
   ?>
