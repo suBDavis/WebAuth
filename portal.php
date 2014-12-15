@@ -102,6 +102,12 @@ function kickback(){
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
   <style>
+  .nav-pills > li > a {
+    font-size: 18px;
+    color: #37404e;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+  }
   </style>
 </head>
 <body>
@@ -118,6 +124,7 @@ function kickback(){
             <li role="presentation"><a href="#">Profile</a></li>
             <li role="presentation"><a href="#">Messages</a></li>
             <li role="presentation"><a href="#">BanLog</a></li>
+            <li role="presentation"><a href="#">Sign Out</a></li>
           </ul>
         </div>
       </div>
