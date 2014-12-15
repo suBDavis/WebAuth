@@ -105,8 +105,8 @@ function kickback(){
   .nav-pills > li > a {
     font-size: 18px;
     color: #37404e;
-    border-radius: 5px 5px 0 0;
-    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
   }
   </style>
 </head>
@@ -114,11 +114,11 @@ function kickback(){
   <div class='row'>
     <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
       <div class='row'>
-        <div class='col-md-6 col-md-offset-1'>
+        <div class='col-md-5 col-md-offset-1'>
           <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
           <h4>UUID: <?php echo $uuid;?></h4>
         </div>
-        <div class='col-md-4' style ="padding-top:30px;">
+        <div class='col-md-5' style ="padding-top:22px;">
           <ul class="nav nav-pills">
             <li role="presentation"><a href="#">Member List</a></li>
             <li role="presentation"><a href="#">Profile</a></li>
