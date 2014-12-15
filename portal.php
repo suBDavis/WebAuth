@@ -151,11 +151,6 @@ function kickback(){
           </ul>
         </div>
       </div>
-      <div class='row'>
-        <div class='col-md-10 col-md-offset-1' style='padding-top: .5cm; padding-left: .5cm;'>
-
-        </div>
-      </div>
     </div>
   </div>
   <?php
@@ -230,7 +225,7 @@ function kickback(){
                   <th style='width:150px;'>Time</th>
                 </tr>";
                 //do loop for filling table
-                  $sql = "SELECT * FROM `banlog`";
+                  $sql = "SELECT * FROM `banlog` ORDER BY `time`";
                   $result = mysqli_query($con, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     $trclass;
