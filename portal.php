@@ -227,7 +227,7 @@ function kickback(){
                   <th width='110'>Staff Issuer</th>
                   <th>Offense</th>
                   <th>Action</th>
-                  <th style='width:110px;'>Time</th>
+                  <th style='width:150px;'>Time</th>
                 </tr>";
                 //do loop for filling table
                   $sql = "SELECT * FROM `banlog`";
