@@ -17,6 +17,8 @@ $mc_pass = $_POST["mc_pass"];
 $player;
 $uuid;
 $isStaff;
+$email;
+$skype;
 
 if (isset($_COOKIE['auth'])){
 
@@ -30,6 +32,8 @@ if (isset($_COOKIE['auth'])){
       $player = $row['name'];
       $uuid = $row['uuid'];
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
+      $email = $row['email'];
+      $skype = $row['skype'];
 
   } else {
     unsetCookie();
@@ -154,8 +158,6 @@ function kickback(){
   </div>
   <?php
     //do SQL for getting user profile
-    $skype_name = "placeholder";
-    $email = "placeholder@place.holder";
     switch ($tab){
       case 'profile':
         echo "
