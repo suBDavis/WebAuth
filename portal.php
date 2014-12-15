@@ -22,7 +22,7 @@ if (isset($_COOKIE['auth'])){
   if (mysql_num_rows($result) == 1){
 
       //you are already logged in.  Whatever homie.
-      echo "Welcome back " . $row['name']; 
+      echo "Welcome back " . $row['name'];
 
   } else {
     unsetCookie();
@@ -78,6 +78,7 @@ function unsetCookie(){
   setcookie('auth', '', time() - 3600); // empty value and old timestamp
 }
 function kickback(){
+  include 'creds.php';
   header("Location: " . $root_dir );
   die();
 }
