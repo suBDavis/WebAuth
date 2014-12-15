@@ -55,7 +55,7 @@ if (isset($_COOKIE['auth'])){
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       //save avitar on the webserver.  Update database with link
       $url1 = "https://mctoolbox.net/avatar/".$player."/100";
-      $img1 = "avatars/".$player;
+      $img1 = "avatars/".strtolower($player);
       file_put_contents($img1, file_get_contents($url1));
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
@@ -133,7 +133,7 @@ function kickback(){
     <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
       <div class='row'>
         <div class='col-md-1 col-md-offset-1'>
-          <img src='avatars/<?php echo $player;?>'/>
+          <img src='avatars/<?php echo strtolower($player);?>'/>
         </div>
         <div class='col-md-4'>
           <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
@@ -200,7 +200,7 @@ function kickback(){
         while ($row = mysqli_fetch_array($result)){
           echo
           "<tr>
-            <td><img width='50' height = '50' src='avatars/".$row['name']."'/></td>
+            <td><img width='50' height = '50' src='avatars/".strtolower($row['name'])."'/></td>
             <td>".$row['name']."</td>
             <td>".$row['skype']."</td>
           </tr>";
