@@ -14,7 +14,8 @@ echo $resp;
 // Close request to clear up some resources
 curl_close($curl);
 
-/*$json_a = json_decode($res,true);
+$json_a = json_decode($res,true);
 echo $json_a[name];
-echo $json_a[id];*/
+echo "<br>";
+echo $json_a[id];
 ?>
