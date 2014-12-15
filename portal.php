@@ -19,7 +19,7 @@ if (isset($_COOKIE['auth'])){
   $sql = "SELECT * FROM `users` WHERE `cookie` LIKE '" . $auth . "'";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
-  if (mysql_num_rows($result) == 1){
+  if (mysqli_num_rows($result) == 1){
 
       //you are already logged in.  Whatever homie.
       echo "Welcome back " . $row['name'];
@@ -28,7 +28,7 @@ if (isset($_COOKIE['auth'])){
     unsetCookie();
     kickBack();
   }
-} else if (isset($_POST['mc_username'])) {
+} else if (isset($mc_username)) {
 
   $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
   $result = mysqli_query($con, $sql);
