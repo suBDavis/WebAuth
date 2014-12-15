@@ -13,6 +13,11 @@ $auth = $_COOKIE["auth"];
 $mc_username = $_POST["mc_username"];
 $mc_pass = $_POST["mc_pass"];
 
+//after auth, these are the variables that I can use on the page.
+$player;
+$uuid;
+$isStaff;
+
 if (isset($_COOKIE['auth'])){
 
   //find the value of the latest known cookie
@@ -22,7 +27,9 @@ if (isset($_COOKIE['auth'])){
   if (mysqli_num_rows($result) == 1){
 
       //you are already logged in.  Whatever homie.
-      echo "Welcome back " . $row['name'];
+      $player = $row['name'];
+      $uuid = getUUID($player);
+      if ($row['other'] == 1) {$isStaff = TRUE;} else {$isStaff = FALSE;}
 
   } else {
     unsetCookie();
@@ -40,23 +47,29 @@ if (isset($_COOKIE['auth'])){
       setcookie('auth', $c_value);
       //get the UUID
       $uuid = getUUID($mc_username);
+      $player = $mc_username;
+      if ($row['other'] == 1){$isStaff = TRUE;}else{$isStaff = FALSE;}
       echo $uuid;
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
       $result = mysqli_query($con, $sql);
-      //do other things
-      echo("success");
+      //do other things?
+
     } else {
       //do this if login fails
       kickback();
     }
-  } else{echo "You are not in the database; Register by running /webauth <password> ";}
+  } else{ kickback(); }
 } else {
   //do this if cookie doesnt match
   unsetCookie();
   //kick back to login
   kickback();
 }
+
+mysqli_close($con);
+
+
 function getUUID($username){
   $curl = curl_init();
   // Set some options - we are passing in a useragent too here
@@ -82,5 +95,23 @@ function kickback(){
   header("Location: " . $root_dir );
   die();
 }
-
 ?>
+<html>
+<head>
+  <link href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css' rel='stylesheet'>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div class='row'>
+    <div class='col-md-1' style='padding-top: .5cm; paddint-left: .2cm;'>
+      <h1>You are logged on</h1>
+      <h3>Player: <?php echo $player;?></h3>
+      <h3>UUID: <?php echo $uuid;?></h3>
+      <h3>Staff? <?php echo $isStaff;?></h3>
+    </div>
+  </div>
+</body>
+</html>
