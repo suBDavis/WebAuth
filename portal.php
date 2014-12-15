@@ -49,14 +49,15 @@ if (isset($_COOKIE['auth'])){
       $uuid = getUUID($mc_username);
       $player = $mc_username;
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
-      //set cookie in SQL DB
-      $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
-      $result = mysqli_query($con, $sql);
-      //do other things?
       //save avitar on the webserver.  Update database with link
       $url1 = "https://mctoolbox.net/avatar/".$player."/100";
       $img1 = "avatars/".$player;
       file_put_contents($img1, file_get_contents($url1));
+      //set cookie in SQL DB
+      $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
+      $result = mysqli_query($con, $sql);
+      //do other things?
+
     } else {
       //do this if login fails
       kickback();
@@ -127,7 +128,7 @@ function kickback(){
     <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
       <div class='row'>
         <div class='col-md-1 col-md-offset-1'>
-          <img src='https://mctoolbox.net/avatar/<?php echo $player?>/100'/>
+          <img src='avatars/<?php echo $player;?>'/>
         </div>
         <div class='col-md-4'>
           <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
