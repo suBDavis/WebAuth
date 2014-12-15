@@ -224,10 +224,10 @@ function kickback(){
               <table class='table table-striped'>
                 <tr>
                   <th>Name</th>
-                  <th width='100'>Staff Issuer</th>
+                  <th width='150'>Staff Issuer</th>
                   <th>Offense</th>
                   <th>Action</th>
-                  <th>Time</th>
+                  <th width='150'>Time</th>
                 </tr>";
                 //do loop for filling table
                   $sql = "SELECT * FROM `banlog`";
