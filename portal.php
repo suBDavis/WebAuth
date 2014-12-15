@@ -137,11 +137,11 @@ function kickback(){
   <div class='row'>
     <div class='col-sm-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:10px;background-color: #D6CA72;'>
       <div class='row'>
-        <div class='col-sm-1 col-sm-offset-1'>
+        <div class='col-sm-1 col-sm-offset-1' style="min-width: 110px;">
           <img src='avatars/<?php echo $player;?>'/>
         </div>
         <div class='col-sm-4'>
-          <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
+          <h2>Hello there, <?php echo $player;?><small> [<?php echo $isStaff ? "Staff" : "Member";?>]</small></h2>
           <h4>UUID: <?php echo $uuid;?></h4>
         </div>
         <div class='col-sm-5' style ="padding-top:22px;">
