@@ -131,16 +131,16 @@ function kickback(){
 </head>
 <body>
   <div class='row'>
-    <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:10px;background-color: #D6CA72;'>
+    <div class='col-sm-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:10px;background-color: #D6CA72;'>
       <div class='row'>
-        <div class='col-md-1 col-md-offset-1'>
+        <div class='col-sm-1 col-sm-offset-1'>
           <img src='avatars/<?php echo $player;?>'/>
         </div>
-        <div class='col-md-4'>
+        <div class='col-sm-4'>
           <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
           <h4>UUID: <?php echo $uuid;?></h4>
         </div>
-        <div class='col-md-5' style ="padding-top:22px;">
+        <div class='col-sm-5' style ="padding-top:22px;">
           <ul class="nav nav-pills">
             <li role="presentation"><a href="?tab=list">Member List</a></li>
             <li role="presentation"><a href="?tab=profile">Profile</a></li>
@@ -159,9 +159,9 @@ function kickback(){
       case 'profile':
         echo "
         <div class='row'>
-        <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+        <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
         <div class='row'>
-        <div class='col-md-5' style='margin-left:15px; margin-right:15px;'>
+        <div class='col-sm-5' style='margin-left:15px; margin-right:15px;'>
         <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Skype Name</span>
@@ -182,9 +182,9 @@ function kickback(){
       case 'list':
         echo "
           <div class='row'>
-          <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+          <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
           <div class='row'>
-          <div class='col-md-8 col-md-offset-2'>
+          <div class='col-sm-8 col-sm-offset-2'>
           <table class='table table-striped'>
           <tr>
           <th>Avatar</th>
@@ -213,9 +213,9 @@ function kickback(){
       case 'banlog':
       echo "
       <div class='row'>
-        <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+        <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
           <div class='row'>
-            <div class='col-md-10 col-md-offset-1'>
+            <div class='col-sm-10 col-sm-offset-1'>
               <table class='table table-striped'>
                 <tr>
                   <th>Name</th>
