@@ -55,7 +55,7 @@ if (isset($_COOKIE['auth'])){
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       //save avitar on the webserver.  Update database with link
       $url1 = "https://mctoolbox.net/avatar/".$player."/100";
-      $img1 = "avatars/".$row['user'];
+      $img1 = "avatars/".$row['name'];
       file_put_contents($img1, file_get_contents($url1));
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
