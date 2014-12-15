@@ -220,7 +220,7 @@ function kickback(){
       <div class='row'>
         <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
           <div class='row'>
-            <div class='col-md-8 col-md-offset-2'>
+            <div class='col-md-10 col-md-offset-1'>
               <table class='table table-striped'>
                 <tr>
                   <th>Name</th>
