@@ -73,7 +73,7 @@ switch($_GET['tab']){
     unsetCookie();
     kickback();
     break;
-  defualt:
+  default:
     $tab = $_GET['tab'];
 }
 
