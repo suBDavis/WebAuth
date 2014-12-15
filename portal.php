@@ -131,7 +131,7 @@ function kickback(){
 </head>
 <body>
   <div class='row'>
-    <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
+    <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:10px;background-color: #D6CA72;'>
       <div class='row'>
         <div class='col-md-1 col-md-offset-1'>
           <img src='avatars/<?php echo $player;?>'/>
@@ -222,7 +222,7 @@ function kickback(){
                   <th width='110'>Staff Issuer</th>
                   <th>Offense</th>
                   <th>Action</th>
-                  <th style='width:150px;'>Time</th>
+                  <th>Time</th>
                 </tr>";
                 //do loop for filling table
                   $sql = "SELECT * FROM `banlog` ORDER BY `timestamp` DESC";
