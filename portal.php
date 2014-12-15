@@ -193,7 +193,7 @@ function kickback(){
         //do loop for filling table
         $sql = "SELECT * FROM `users` WHERE `active` = '1'";
         $result = mysqli_query($con, $sql);
-        while ($row = mysql_fetch_array($result)){
+        while ($row = mysqli_fetch_array($result)){
           echo
           "<tr>
             <td><img src='avatars/".$player."/></td>
