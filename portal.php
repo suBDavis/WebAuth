@@ -233,8 +233,23 @@ function kickback(){
                   $sql = "SELECT * FROM `banlog`";
                   $result = mysqli_query($con, $sql);
                   while ($row = mysqli_fetch_array($result)){
+                    $trclass;
+                  switch($row['action']){
+                    case 'ban':
+                      $trclass= "class='danger'";
+                      break;
+                    case 'warning':
+                      $trclass= "class='warning'";
+                      break;
+                    case 'pardon':
+                      $trclass= "class='success'";
+                      break;
+                    default:
+                      $trclass= "";
+                      break;
+                  }
                   echo
-                    "<tr>
+                    "<tr ".$trclass.">
                       <td>".$row['name']."</td>
                       <td>".$row['staff']."</td>
                       <td>".$row['offense']."</td>
