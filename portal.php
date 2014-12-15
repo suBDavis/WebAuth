@@ -124,7 +124,10 @@ function kickback(){
   <div class='row'>
     <div class='col-md-12' style='padding-top: 10px; padding-left: 30px;background-color: #D6CA72;'>
       <div class='row'>
-        <div class='col-md-5 col-md-offset-1'>
+        <div class='col-md-1 col-md-offset-1'>
+          <img src='https://mctoolbox.net/avatar/<?php echo $player?>/100'/>
+        </div>
+        <div class='col-md-4'>
           <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
           <h4>UUID: <?php echo $uuid;?></h4>
         </div>
