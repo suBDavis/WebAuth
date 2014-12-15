@@ -199,7 +199,7 @@ function kickback(){
             <td><img src='avatars/".$player."/></td>
             <td>".$player."</td>
             <td>".$row['skype']."</td>
-          </tr>"
+          </tr>";
         }
         echo "
           </table>
