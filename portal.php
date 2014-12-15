@@ -34,19 +34,40 @@ if (isset($_COOKIE['auth'])){
   $sql = "SELECT * FROM `users` WHERE `name` LIKE '" . $mc_username . "'";
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
+  if (mysql_num_rows($result)>0){
+    if ( hash('sha256' , $mc_pass) == $row['pass']){
+      $c_value =  hash('sha256', time());
+      //on success
+      setcookie('auth', $c_value);
+      //get the UUID
+      $uuid = getUUID($mc_username);
+      //set cookie in SQL DB
+      $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
+      //do other things
+      echo("success");
+    } else {
+      //do this if login fails
+      header('/');
+    }
+  } else{echo "You are not in the database; Register by running /webauth <password> ";}
+}
+function getUUID($username){
+  $curl = curl_init();
+  // Set some options - we are passing in a useragent too here
+  curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'https://api.mojang.com/users/profiles/minecraft/subdavis',
+    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+  ));
+  // Send the request & save response to $resp
+  $resp = curl_exec($curl);
 
-  if ( hash('sha256' , $mc_pass) == $row['pass']){
-    $c_value =  hash('sha256', time());
-    //on success
-    setcookie('auth', $c_value);
-    //set cookie in SQL DB
-    $sql = "UPDATE `webauth`.`users` SET `cookie` = \'text2\' WHERE `users`.`index` = 2;";
-    //do other things
-    echo("success");
-  } else {
-    //do this if login fails
-    header('/');
-  }
+  echo $resp;
+  // Close request to clear up some resources
+  curl_close($curl);
+
+  $json_a = json_decode($resp,true);
+  return $json_a[name];
 }
 
 ?>
