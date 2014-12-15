@@ -27,7 +27,8 @@ if (isset($_COOKIE['auth'])){
     //do this if cookie doesnt match
     setcookie('auth', '0');
     //kick back to login
-    header('/');
+    header("Location: /");
+    die();
   }
 
 } else {
@@ -50,7 +51,8 @@ if (isset($_COOKIE['auth'])){
       echo("success");
     } else {
       //do this if login fails
-      header('/');
+      header("Location: /");
+      die();
     }
   } else{echo "You are not in the database; Register by running /webauth <password> ";}
 }
