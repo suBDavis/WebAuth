@@ -29,7 +29,7 @@ if (isset($_COOKIE['auth'])){
       //you are already logged in.  Whatever homie.
       $player = $row['name'];
       $uuid = getUUID($player);
-      if ($row['other'] == 1) {$isStaff = TRUE;} else {$isStaff = FALSE;}
+      $isStaff = $row['other'] == 1 ? TRUE : FALSE;
 
   } else {
     unsetCookie();
@@ -48,7 +48,7 @@ if (isset($_COOKIE['auth'])){
       //get the UUID
       $uuid = getUUID($mc_username);
       $player = $mc_username;
-      if ($row['other'] == 1){$isStaff = TRUE;}else{$isStaff = FALSE;}
+      $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       echo $uuid;
       //set cookie in SQL DB
       $sql = "UPDATE `webauth`.`users` SET `cookie` = '".$c_value."' WHERE `users`.`uuid` = '".$uuid."';";
@@ -107,8 +107,25 @@ function kickback(){
 <body>
   <div class='row'>
     <div class='col-md-12' style='padding-top: .5cm; padding-left: .5cm;'>
-      <h1>Hello there, <?php echo $player;?></h1>
-      <h3>UUID: <?php echo $uuid;?></h3>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-1'>
+          <h2>Hello there, <?php echo $player;?><small> Status: <?php echo $isStaff ? "Staff" : "Member";?></small></h2>
+          <h4>UUID: <?php echo $uuid;?></h4>
+        </div>
+        <div class='col-md-2'>
+          <ul class="nav nav-pills">
+            <li role="presentation"><a href="#">Member List</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+            <li role="presentation"><a href="#">BanLog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-10 col-md-offset-1' style='padding-top: .5cm; padding-left: .5cm;'>
+
+        </div>
+      </div>
     </div>
   </div>
 </body>
