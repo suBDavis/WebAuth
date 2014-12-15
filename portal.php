@@ -69,7 +69,6 @@ if (isset($_COOKIE['auth'])){
   //kick back to login
   kickback();
 }
-mysqli_close($con);
 
 switch($_GET['tab']){
   case 'exit':
@@ -136,7 +135,7 @@ function kickback(){
         </div>
         <div class='col-md-5' style ="padding-top:22px;">
           <ul class="nav nav-pills">
-            <li role="presentation"><a href="#">Member List</a></li>
+            <li role="presentation"><a href="?tab=list">Member List</a></li>
             <li role="presentation"><a href="?tab=profile">Profile</a></li>
             <li role="presentation"><a href="#">Messages<span class="badge">4</span></a></li>
             <li role="presentation"><a href="#">BanLog</a></li>
@@ -179,7 +178,39 @@ function kickback(){
         </div>
         ";
       break;
+      case 'list':
+        echo "
+          <div class='row'>
+          <div class='col-md-10 col-md-offset-1' style='padding-top:20px;'>
+          <div class='row'>
+          <div class='col-md-8 col-md-offset-2'>
+          <table class='table table-striped'>
+          <tr>
+          <th>Avatar</th>
+          <th>Name</th>
+          <th>Skype</th>
+          </tr>";
+        //do loop for filling table
+        $sql = "SELECT * FROM `users` WHERE `active` = '1'";
+        $result = mysqli_query($con, $sql);
+        while ($row = mysql_fetch_array($result)){
+          echo
+          "<tr>
+            <td><img src='avatars/".$player."/></td>
+            <td>".$player."</td>
+            <td>".$row['skype']."</td>
+          </tr>"
+        }
+        echo "
+          </table>
+          </div>
+          </div>
+          </div>
+          </div>
+        ";
+      break;
     }
   ?>
 </body>
 </html>
+<?php mysqli_close($con);?>
