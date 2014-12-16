@@ -170,15 +170,20 @@ function kickback(){
         <div class='col-sm-5' style='margin-left:15px; margin-right:15px;'>
         <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
-        <span class='input-group-addon'>Skype Name</span>
-        <input type='text' class='form-control' id='prof_skype' name='prof_skype' placeholder=".$skype.">
-        </div>
-        <div class='input-group'>
         <span class='input-group-addon'>Email Address</span>
         <input type='text' class='form-control' id='prof_email' name='prof_email' placeholder=".$email.">
         </div>
-        <input style='margin-top:20px;' type='submit' class='btn btn-default'/>
+        <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
         </form>
+
+        <form role='form' action='?tab=profile' method='post'>
+        <div class='input-group'>
+        <span class='input-group-addon'>Skype Name</span>
+        <input type='text' class='form-control' id='prof_skype' name='prof_skype' placeholder=".$skype.">
+        </div>
+        <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
+        </form>
+
         </div>
         </div>
         </div>
