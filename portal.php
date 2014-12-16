@@ -168,7 +168,7 @@ function kickback(){
         <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
         <div class='row'>
         <div class='col-sm-5' style='margin-left:15px; margin-right:15px;'>
-        <form role='form' action='update.php?tab=profile' method='post'>
+        <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Email Address</span>
         <input type='text' class='form-control' id='prof_email' name='prof_email' placeholder=".$email.">
@@ -176,12 +176,14 @@ function kickback(){
         <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
         </form>
 
-        <form role='form' action='update.php?tab=profile' method='post'>
+        <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Skype Name</span>
         <input type='text' class='form-control' id='prof_skype' name='prof_skype' placeholder=".$skype.">
-        </div>
+        <span class='input-group-btn'>
         <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
+        </span>
+        </div>
         </form>
 
         </div>
@@ -189,6 +191,23 @@ function kickback(){
         </div>
         </div>
         ";
+
+        if(isset($_POST['prof_email'])){
+          if($_POST['prof_email'] == ""){}
+            else{
+              $sql = "UPDATE `webauth`.`users` SET `email` = '".$_POST['prof_email']."' WHERE `users`.`uuid` = '".$uuid."';";
+              $result = mysqli_query($con, $sql);
+              sleep(1);
+            }
+          }
+        if(isset($_POST['prof_skype'])){
+          if($_POST['prof_skype'] == ""){}
+            else{
+              $sql = "UPDATE `webauth`.`users` SET `skype` = '".$_POST['prof_skype']."' WHERE `users`.`uuid` = '".$uuid."';";
+              $result = mysqli_query($con, $sql);
+              sleep(1);
+            }
+          }
       break;
       case 'list':
         echo "
