@@ -267,9 +267,14 @@ function kickback(){
           <div class='row'>
             <div class='col-sm-10 col-sm-offset-1'>
               <table class='table table-striped'>
+              <col width='10%'>
+              <col width='10%'>
+              <col width='50%'>
+              <col width='10%'>
+              <col width='20%'>
                 <tr>
                   <th>Name</th>
-                  <th width='110'>Staff Issuer</th>
+                  <th>Staff Issuer</th>
                   <th>Offense</th>
                   <th>Action</th>
                   <th>Time</th>
