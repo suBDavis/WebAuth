@@ -177,7 +177,7 @@ function kickback(){
         <span class='input-group-addon'>Email Address</span>
         <input type='text' class='form-control' id='email' name='email' placeholder=".$email.">
         </div>
-        <button style='margin-top:20px;' type='submit' class='btn btn-default'>Update Profile</button>
+        <input style='margin-top:20px;' type='submit' class='btn btn-default'>Update Profile/>
         </form>
         </div>
         </div>
