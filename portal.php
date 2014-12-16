@@ -310,6 +310,58 @@ function kickback(){
       </div>
       ";
       break;
+      case 'staff':
+        if ($isStaff){
+          echo "
+          <div class='row'>
+          <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
+          <div class='row'>
+          <div class='col-sm-10 col-sm-offset-1'>
+          <table class='table table-striped'>
+          <tr>
+          <th>Name</th>
+          <th width='110'>Staff Issuer</th>
+          <th>Offense</th>
+          <th>Action</th>
+          <th>Time</th>
+          </tr>";
+          //do loop for filling table
+          $sql = "SELECT * FROM `banlog` ORDER BY `timestamp` DESC";
+          $result = mysqli_query($con, $sql);
+          while ($row = mysqli_fetch_array($result)){
+            $trclass;
+            switch($row['action']){
+              case 'ban':
+              $trclass= "class='danger'";
+              break;
+              case 'warning':
+              $trclass= "class='warning'";
+              break;
+              case 'pardon':
+              $trclass= "class='success'";
+              break;
+              default:
+              $trclass= "";
+              break;
+            }
+            echo
+            "<tr ".$trclass.">
+            <td>".$row['name']."</td>
+            <td>".$row['staff']."</td>
+            <td>".$row['offense']."</td>
+            <td>".$row['action']."</td>
+            <td>".$row['timestamp']."</td>
+            </tr>";
+          }
+          echo "
+          </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          ";
+        } else echo "Nice Try.";
+      break;
     }
   ?>
 </body>
