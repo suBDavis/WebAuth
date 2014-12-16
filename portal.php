@@ -269,9 +269,9 @@ function kickback(){
               <table class='table table-striped'>
               <col width='10%'>
               <col width='10%'>
-              <col width='50%'>
+              <col width='60%'>
               <col width='10%'>
-              <col width='20%'>
+              <col width='10%'>
                 <tr>
                   <th>Name</th>
                   <th>Staff Issuer</th>
