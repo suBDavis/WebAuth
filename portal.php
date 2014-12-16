@@ -184,6 +184,15 @@ function kickback(){
         </div>
         </div>
         ";
+
+        if(isset($_POST['prof_email'])){
+          $sql = "UPDATE `webauth`.`users` SET `email` = '".$_POST['prof_email']."' WHERE `users`.`uuid` = '".$uuid."';";
+          $result = mysqli_query($con, $sql);
+        }
+        if(isset($_POST['prof_skype'])){
+          $sql = "UPDATE `webauth`.`users` SET `skype` = '".$_POST['prof_skype']."' WHERE `users`.`uuid` = '".$uuid."';";
+          $result = mysqli_query($con, $sql);
+        }
       break;
       case 'list':
         echo "
