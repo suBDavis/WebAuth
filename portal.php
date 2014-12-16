@@ -172,8 +172,9 @@ function kickback(){
         <div class='input-group'>
         <span class='input-group-addon'>Email Address</span>
         <input type='text' class='form-control' id='prof_email' name='prof_email' placeholder=".$email.">
-        </div>
-        <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
+        <span class='input-group-btn'>
+        <input type='submit' value='Update' class='btn btn-default'/>
+        </span>
         </form>
 
         <form role='form' action='?tab=profile' method='post'>
@@ -181,7 +182,7 @@ function kickback(){
         <span class='input-group-addon'>Skype Name</span>
         <input type='text' class='form-control' id='prof_skype' name='prof_skype' placeholder=".$skype.">
         <span class='input-group-btn'>
-        <input style='margin-top:20px;' type='submit' value='Update' class='btn btn-default'/>
+        <input type='submit' value='Update' class='btn btn-default'/>
         </span>
         </div>
         </form>
@@ -197,7 +198,8 @@ function kickback(){
             else{
               $sql = "UPDATE `webauth`.`users` SET `email` = '".$_POST['prof_email']."' WHERE `users`.`uuid` = '".$uuid."';";
               $result = mysqli_query($con, $sql);
-              sleep(1);
+              $url = $root_dir."/portal.php?tab=profile";
+              header( "Location: " . $url ) ;
             }
           }
         if(isset($_POST['prof_skype'])){
@@ -205,7 +207,8 @@ function kickback(){
             else{
               $sql = "UPDATE `webauth`.`users` SET `skype` = '".$_POST['prof_skype']."' WHERE `users`.`uuid` = '".$uuid."';";
               $result = mysqli_query($con, $sql);
-              sleep(1);
+              $url = $root_dir."/portal.php?tab=profile";
+              header( "Location: " . $url ) ;
             }
           }
       break;
