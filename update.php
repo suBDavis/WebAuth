@@ -18,5 +18,5 @@ if(isset($_POST['prof_skype'])){
     $result = mysqli_query($con, $sql);
   }
 }
-header( "Location: portal.php?tab=".$_GET['tab'] ) ;
+header( "Location: ".$root_dir."/portal.php?tab=".$_GET['tab'] ) ;
 ?>
