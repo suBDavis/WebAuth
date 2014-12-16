@@ -51,7 +51,7 @@ if (isset($_COOKIE['auth'])){
       //on success
       setcookie('auth', $c_value);
       //get the UUID
-      $uuid = getUUID($mc_username);
+      $uuid = $row['uuid'];
       $player = $row['name'];
       $isStaff = $row['other'] == 1 ? TRUE : FALSE;
       //save avitar on the webserver.  Update database with link
@@ -84,24 +84,24 @@ switch($_GET['tab']){
     $tab = $_GET['tab'];
 }
 
-function getUUID($username){
-
-  $curl = curl_init();
-  // Set some options - we are passing in a useragent too here
-  curl_setopt_array($curl, array(
-    CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => "https://api.mojang.com/users/profiles/minecraft/" . $username,
-    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
-  ));
-  // Send the request & save response to $resp
-  $resp = curl_exec($curl);
-  // Close request to clear up some resources
-  curl_close($curl);
-
-  $json_a = json_decode($resp,true);
-  return $json_a['id'];
-
-}
+// function getUUID($username){
+//
+//   $curl = curl_init();
+//   // Set some options - we are passing in a useragent too here
+//   curl_setopt_array($curl, array(
+//     CURLOPT_RETURNTRANSFER => 1,
+//     CURLOPT_URL => "https://api.mojang.com/users/profiles/minecraft/" . $username,
+//     CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+//   ));
+//   // Send the request & save response to $resp
+//   $resp = curl_exec($curl);
+//   // Close request to clear up some resources
+//   curl_close($curl);
+//
+//   $json_a = json_decode($resp,true);
+//   return $json_a['id'];
+//
+// }
 function unsetCookie(){
   unset($_COOKIE['auth']);
   setcookie('auth', '', time() - 3600); // empty value and old timestamp
@@ -135,7 +135,7 @@ function kickback(){
 </head>
 <body>
   <div class='row'>
-    <div class='col-sm-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:10px;background-color: #D6CA72;'>
+    <div class='col-sm-12' style='padding-top: 10px; padding-left: 30px;padding-bottom:15px;background-color: #D6CA72;'>
       <div class='row'>
         <div class='col-sm-1 hidden-sm hidden-md'>
         </div>
