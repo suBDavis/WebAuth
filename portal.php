@@ -175,8 +175,9 @@ function kickback(){
         <span class='input-group-btn'>
         <input type='submit' value='Update' class='btn btn-default'/>
         </span>
+        </div>
         </form>
-
+        <br>
         <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Skype Name</span>
