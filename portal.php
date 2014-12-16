@@ -131,6 +131,9 @@ function kickback(){
     margin-left: 0;
     margin-right: 0;
   }
+  .proftable > td {
+    padding: 10px 10px;
+  }
   </style>
 </head>
 <body>
@@ -177,7 +180,7 @@ function kickback(){
         </span>
         </div>
         </form>
-        <br>
+
         <form role='form' action='?tab=profile' method='post'>
         <div class='input-group'>
         <span class='input-group-addon'>Skype Name</span>
@@ -187,7 +190,20 @@ function kickback(){
         </span>
         </div>
         </form>
+        <h3>Privacy Info</h3>
+        <p>Your Skype name WILL be displayed to OTHER registered users.</p>
+        <p>Your Eamail WILL NOT be displayed, but staff may contact you.</p>
+        <p>Your birthday WIL NOT be displayed, and you will get a special gift in-game on your birthday.</p>
+        </div>
+        <div class='col-sm-5'>
+        <table class='proftable'>
+        <tr><td valign='top'>
+        <img src='http://achievecraft.com/tools/skin.php?name=".$player."&size=256'/>
+        </td>
+        <td valign='top'>
 
+        </td></tr>
+        </table>
         </div>
         </div>
         </div>
