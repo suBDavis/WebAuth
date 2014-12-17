@@ -1,7 +1,7 @@
-<div class='row'>
-  <div class='col-sm-10 col-sm-offset-1' style='padding-top:20px;'>
+
+  <div class='col-sm-10' style='padding-top:20px;'>
     <div class='row'>
-      <div class='col-sm-5' style='margin-left:15px; margin-right:15px;'>
+      <div class='col-sm-5' style='margin-left:15px; margin-right:15px;min-width: 400px;'>
         <form role='form' action='?tab=profile' method='post'>
           <div class='input-group'>
             <span class='input-group-addon'>Email Address</span>
@@ -26,7 +26,7 @@
         <p>Your Eamail WILL NOT be displayed, but staff may contact you.</p>
         <p>Your birthday WIL NOT be displayed, and you will get a special gift in-game on your birthday.</p>
       </div>
-      <div class='col-sm-5'>
+      <div class='col-sm-1' style='min-width:100px;'>
         <table class='proftable'>
           <tr><td valign='top'>
             <img src='http://achievecraft.com/tools/skin.php?name=<?php echo $player; ?>&size=256'/>
@@ -38,4 +38,3 @@
       </div>
     </div>
   </div>
-</div>
