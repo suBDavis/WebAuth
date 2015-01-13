@@ -78,7 +78,8 @@ if (isset($_COOKIE['auth'])){
         <li role="presentation"><a href="?tab=profile">Profile</a></li>
         <li role="presentation"><a href="?tab=mail">Mail<span class="badge">4</span></a></li>
         <li role="presentation"><a href="?tab=banlog">BanLog</a></li>
-        <?php if($isStaff){echo"<li role='presentation'><a href='?tab=staff'>Staff</a></li>";}?>
+        <li role="presentation"><a href="?tab=chat">Chat</a></li>
+        <?php echo $isStaff ? "<li role='presentation'><a href='?tab=staff'>Staff</a></li>" : " " ;?>
         <li role="presentation"><a href="?tab=exit">Sign Out</a></li>
       </ul>
     </div>
@@ -93,25 +94,6 @@ if (isset($_COOKIE['auth'])){
       case 'profile':
         //include the HTML page with variables rendered.
         include 'profile.php';
-
-        if(isset($_POST['prof_email'])){
-          if($_POST['prof_email'] == ""){}
-            else{
-              $sql = "UPDATE `webauth`.`users` SET `email` = '".$_POST['prof_email']."' WHERE `users`.`uuid` = '".$uuid."';";
-              $result = mysqli_query($con, $sql);
-              $url = $root_dir."/portal.php?tab=profile";
-              header( "Location: " . $url ) ;
-            }
-          }
-        if(isset($_POST['prof_skype'])){
-          if($_POST['prof_skype'] == ""){}
-            else{
-              $sql = "UPDATE `webauth`.`users` SET `skype` = '".$_POST['prof_skype']."' WHERE `users`.`uuid` = '".$uuid."';";
-              $result = mysqli_query($con, $sql);
-              $url = $root_dir."/portal.php?tab=profile";
-              header( "Location: " . $url ) ;
-            }
-          }
       break;
 
       case 'list':
@@ -129,6 +111,10 @@ if (isset($_COOKIE['auth'])){
         if ($isStaff){
           //do the things;
         } else echo "Nice Try.";
+      break;
+
+      case 'chat':
+        include 'chat.php';
       break;
     }
   ?>

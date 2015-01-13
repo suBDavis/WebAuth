@@ -1,49 +1,64 @@
 <?php
+  $ban_update = "Insert New";
   $ban_staff = $player;
-  if (isset($_GET['entry'])){
-    $sql = "SELECT * FROM `webauth`.`banlog` WHERE `banlog`.`index` = '".$_GET['entry']."';";
-    $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $ban_name = $row['name'];
-    $ban_offense = $row['offense'];
-    $ban_staff = $row['staff'];
-    $ban_action = $row['action'];
-  }
-  if (isset($_POST['ban_name'])){
-    $sql = "INSERT INTO `webauth`.`banlog` (`name`, `staff`, `offense`,`action`) VALUES ('".$_POST['ban_name']."' ,'".$_POST['ban_by']."' ,'".$_POST['ban_offense']."' ,'".$_POST['ban_action']."');";
-    $result = mysqli_query($con, $sql);
-    $url = $root_dir."/portal.php?tab=banlog";
-    header( "Location: " . $url ) ;
+  if ($isStaff){
+    if (isset($_GET['entry'])){
+      $sql = "SELECT * FROM `webauth`.`banlog` WHERE `banlog`.`index` = '".$_GET['entry']."';";
+      $result = mysqli_query($con, $sql);
+      $row = mysqli_fetch_assoc($result);
+      $ban_name = $row['name'];
+      $ban_offense = $row['offense'];
+      $ban_staff = $row['staff'];
+      $ban_action = $row['action'];
+      $ban_update = "Update";
+      $ban_index = $row['index'];
+    }
+    if (isset($_POST['ban_name'])){
+    	if ($_GET['type'] == "Update"){
+	      $sql = "UPDATE `webauth`.`banlog` SET `name` = '".$_POST['ban_name']."' , `staff` = '".$_POST['ban_by']."' , `offense` = '".$_POST['ban_offense']."' , `action` = '".$_POST['ban_action']."' WHERE `banlog`.`index` = '".$_POST['ban_index']."';";
+	  	  $result = mysqli_query($con, $sql);
+	      $url = $root_dir."/portal.php?tab=banlog";
+	      //header( "Location: " . $url ) ;
+	  } else{
+	      $sql = "INSERT INTO `webauth`.`banlog` (`name`, `staff`, `offense`,`action`) VALUES ('".$_POST['ban_name']."' ,'".$_POST['ban_by']."' ,'".$_POST['ban_offense']."' ,'".$_POST['ban_action']."');";
+	      $result = mysqli_query($con, $sql);
+	      $url = $root_dir."/portal.php?tab=banlog";
+	      header( "Location: " . $url ) ;
+	  }
+    }
   }
 ?>
 <div class='col-sm-10' style='padding-top:15px;'>
+  <?php if ($isStaff){ echo "
   <div class='row'>
     <div class='col-sm-4'>
-      <form role='form' action='?tab=banlog' method='post'>
+      <form role='form' action='?tab=banlog&type=".$ban_update."' method='post'>
         <div class='input-group'>
           <span class='input-group-addon'>Name</span>
-          <input type='text' class='form-control' name='ban_name' value="<?php echo $ban_name;?>">
+          <input type='text' class='form-control' name='ban_name' value='".$ban_name."'>
         </div>
         <div class='input-group'>
           <span class='input-group-addon'>Offense</span>
-          <textarea rows='5' type='text' class='form-control' name='ban_offense'><?php echo $ban_offense;?></textarea>
+          <textarea rows='5' type='text' class='form-control' name='ban_offense'>".$ban_offense."</textarea>
         </div>
       </div>
       <div class='col-sm-4'>
         <div class='input-group'>
           <span class='input-group-addon'>Staff</span>
-          <input type='text' class='form-control' name='ban_by' value="<?php echo $ban_staff;?>">
+          <input type='text' class='form-control' name='ban_by' value='".$ban_staff."'>
         </div>
         <div class='input-group'>
           <span class='input-group-addon'>Action</span>
-          <input type='text' class='form-control' name='ban_action' value="<?php echo $ban_action;?>">
+          <input type='text' class='form-control' name='ban_action' value='".$ban_action."'>
         </div>
-        <input type='submit' value='<?php // swap beteen Create new and update?>Create New Log' class='btn btn-default' style='margin-top:20px;'/>
+        <input style='display:none;' type='text' name='ban_index' value='".$ban_index."'>
+        <input type='submit' value='".$ban_update."' class='btn btn-default' style='margin-top:20px;'/>
         <a class='btn btn-default' style='margin-top:20px;' href='?tab=banlog'>Clear</a>
         <h4>Search: [CTRL] + F</h4>
         </form>
       </div>
     </div>
+    "; }?>
   <div class='row'>
     <div class='col-sm-12' style='padding-top:15px;'>
       <table class='table table-striped'>
